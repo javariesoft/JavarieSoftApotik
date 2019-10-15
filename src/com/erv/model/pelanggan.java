@@ -5,6 +5,7 @@
 package com.erv.model;
 
 import java.sql.Date;
+import org.h2.util.StringUtils;
 
 /**
  *
@@ -23,6 +24,8 @@ public class pelanggan {
     private String STATUSCABANG;
     private String NAMAPEMILIK;
     private int STATUSAKTIF;
+    private boolean NIK;
+    private String JENISPAJAK;
     
     public pelanggan() {
         this.KODEPELANGGAN = "";
@@ -98,9 +101,29 @@ public class pelanggan {
     public String getNPWP() {
         return NPWP;
     }
+    
+    public String getNPWPNoFormat() {
+        String hasil="";
+        for(int i=0;i<NPWP.length();i++){
+            if(StringUtils.isNumber(String.valueOf(NPWP.charAt(i)))){
+                hasil+=NPWP.charAt(i);
+            }
+        }
+        return hasil;
+    }
 
     public void setNPWP(String NPWP) {
         this.NPWP = NPWP;
+    }
+    
+    public void setNPWPNoFormat(String NPWP) {
+        String hasil="";
+        for(int i=0;i<NPWP.length();i++){
+            if(StringUtils.isNumber(String.valueOf(NPWP.charAt(i)))){
+                hasil+=NPWP.charAt(i);
+            }
+        }
+        this.NPWP = hasil;
     }
 
     public String getSTATUSCABANG() {
@@ -125,6 +148,22 @@ public class pelanggan {
 
     public void setSTATUSAKTIF(int STATUSAKTIF) {
         this.STATUSAKTIF = STATUSAKTIF;
+    }
+    
+    public boolean isNIK() {
+        return NIK;
+    }
+
+    public void setNIK(boolean NIK) {
+        this.NIK = NIK;
+    }
+    
+    public String getJENISPAJAK() {
+        return JENISPAJAK;
+    }
+
+    public void setJENISPAJAK(String JENISPAJAK) {
+        this.JENISPAJAK = JENISPAJAK;
     }
 
 }

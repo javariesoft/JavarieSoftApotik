@@ -28,7 +28,7 @@ public class pelangganDao {
     }
 
     public boolean insert(pelanggan bb) throws SQLException {
-        String sql = "insert into PELANGGAN values (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into PELANGGAN values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         //set values to prepared statement object by getting values from bean object
         pstmt.setString(1, bb.getKODEPELANGGAN());
@@ -42,6 +42,8 @@ public class pelangganDao {
         pstmt.setString(9, bb.getSTATUSCABANG());
         pstmt.setString(10, bb.getNAMAPEMILIK());
         pstmt.setInt(11, bb.getSTATUSAKTIF());
+        pstmt.setBoolean(12, bb.isNIK());
+        pstmt.setString(13, bb.getJENISPAJAK());
         boolean i = pstmt.execute();
         return i;
     }
@@ -64,6 +66,8 @@ public class pelangganDao {
             ubean.setSTATUSCABANG(rs.getString(9));
             ubean.setNAMAPEMILIK(rs.getString(10));
             ubean.setSTATUSAKTIF(rs.getInt(11));
+            ubean.setNIK(rs.getBoolean(12));
+            ubean.setJENISPAJAK(rs.getString(13));
             list.add(ubean);
         }
         rs.close();
@@ -90,6 +94,8 @@ public class pelangganDao {
             ubean.setSTATUSCABANG(rs.getString(9));
             ubean.setNAMAPEMILIK(rs.getString(10));
             ubean.setSTATUSAKTIF(rs.getInt(11));
+            ubean.setNIK(rs.getBoolean(12));
+            ubean.setJENISPAJAK(rs.getString(13));
         }
 
         return ubean;
@@ -97,10 +103,11 @@ public class pelangganDao {
 
     public boolean update(pelanggan bb) throws SQLException {
         String sql = "update PELANGGAN set NAMA=?,ALAMAT=?,HP=?,TGLREG=?,"
-                + "BATASKREDIT=?,KODEAKUN=?,NPWP=?,STATUSCABANG=?,NAMAPEMILIK=?,STATUSAKTIF=? where KODEPELANGGAN=?";
+                + "BATASKREDIT=?,KODEAKUN=?,NPWP=?,STATUSCABANG=?,NAMAPEMILIK=?,"
+                + "STATUSAKTIF=?, NIK=?, JENISPAJAK=? where KODEPELANGGAN=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         //set values to prepared statement object by getting values from bean object
-        pstmt.setString(11, bb.getKODEPELANGGAN());
+        
         pstmt.setString(1, bb.getNAMA());
         pstmt.setString(2, bb.getALAMAT());
         pstmt.setString(3, bb.getHP());
@@ -111,6 +118,9 @@ public class pelangganDao {
         pstmt.setString(8, bb.getSTATUSCABANG());
         pstmt.setString(9, bb.getNAMAPEMILIK());
         pstmt.setInt(10, bb.getSTATUSAKTIF());
+        pstmt.setBoolean(11, bb.isNIK());
+        pstmt.setString(12, bb.getJENISPAJAK());
+        pstmt.setString(13, bb.getKODEPELANGGAN());
         boolean i = pstmt.execute();
         return i;
     }
