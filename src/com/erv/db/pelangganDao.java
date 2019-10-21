@@ -11,12 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
- * @author erwadi
+ * @author ervan
  */
 public class pelangganDao {
 
@@ -28,7 +27,12 @@ public class pelangganDao {
     }
 
     public boolean insert(pelanggan bb) throws SQLException {
-        String sql = "insert into PELANGGAN values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into PELANGGAN values ("
+                + "?,?,?,?,?,"
+                + "?,?,?,?,?,"
+                + "?,?,?,?,?,"
+                + "?,?,?,?,?,"
+                + "?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         //set values to prepared statement object by getting values from bean object
         pstmt.setString(1, bb.getKODEPELANGGAN());
@@ -42,8 +46,19 @@ public class pelangganDao {
         pstmt.setString(9, bb.getSTATUSCABANG());
         pstmt.setString(10, bb.getNAMAPEMILIK());
         pstmt.setInt(11, bb.getSTATUSAKTIF());
-        pstmt.setBoolean(12, bb.isNIK());
-        pstmt.setString(13, bb.getJENISPAJAK());
+        pstmt.setString(12, bb.getPROPINSI());
+        pstmt.setString(13, bb.getKABUPATEN());
+        pstmt.setString(14, bb.getKECAMATAN());
+        pstmt.setString(15, bb.getKELURAHAN());
+        pstmt.setString(16, bb.getKODEPOS());
+        pstmt.setString(17, bb.getRT());
+        pstmt.setString(18, bb.getRW());
+        pstmt.setString(19, bb.getNOMOR());
+        pstmt.setString(20, bb.getBLOK());
+        pstmt.setBoolean(21, bb.isNIK());
+        pstmt.setString(22, bb.getALAMATPEMILIK());
+        pstmt.setString(23, bb.getJENISPAJAK());
+        
         boolean i = pstmt.execute();
         return i;
     }
@@ -66,8 +81,18 @@ public class pelangganDao {
             ubean.setSTATUSCABANG(rs.getString(9));
             ubean.setNAMAPEMILIK(rs.getString(10));
             ubean.setSTATUSAKTIF(rs.getInt(11));
-            ubean.setNIK(rs.getBoolean(12));
-            ubean.setJENISPAJAK(rs.getString(13));
+            ubean.setPROPINSI(rs.getString("PROPINSI"));
+            ubean.setKABUPATEN(rs.getString("KABUPATEN"));
+            ubean.setKECAMATAN(rs.getString("KECAMATAN"));
+            ubean.setKELURAHAN(rs.getString("KELURAHAN"));
+            ubean.setKODEPOS(rs.getString("KODEPOS"));
+            ubean.setRT(rs.getString("RT"));
+            ubean.setRW(rs.getString("RW"));
+            ubean.setNOMOR(rs.getString("NOMOR"));
+            ubean.setBLOK(rs.getString("BLOK"));
+            ubean.setNIK(rs.getBoolean("NIK"));
+            ubean.setALAMATPEMILIK(rs.getString("ALAMATPEMILIK"));
+            ubean.setJENISPAJAK(rs.getString("JENISPAJAK"));
             list.add(ubean);
         }
         rs.close();
@@ -94,8 +119,18 @@ public class pelangganDao {
             ubean.setSTATUSCABANG(rs.getString(9));
             ubean.setNAMAPEMILIK(rs.getString(10));
             ubean.setSTATUSAKTIF(rs.getInt(11));
-            ubean.setNIK(rs.getBoolean(12));
-            ubean.setJENISPAJAK(rs.getString(13));
+            ubean.setPROPINSI(rs.getString("PROPINSI"));
+            ubean.setKABUPATEN(rs.getString("KABUPATEN"));
+            ubean.setKECAMATAN(rs.getString("KECAMATAN"));
+            ubean.setKELURAHAN(rs.getString("KELURAHAN"));
+            ubean.setKODEPOS(rs.getString("KODEPOS")); 
+            ubean.setRT(rs.getString("RT"));
+            ubean.setRW(rs.getString("RW"));
+            ubean.setNOMOR(rs.getString("NOMOR"));
+            ubean.setBLOK(rs.getString("BLOK"));
+            ubean.setNIK(rs.getBoolean("NIK"));
+            ubean.setALAMATPEMILIK(rs.getString("ALAMATPEMILIK"));
+            ubean.setJENISPAJAK(rs.getString("JENISPAJAK"));
         }
 
         return ubean;
@@ -103,8 +138,12 @@ public class pelangganDao {
 
     public boolean update(pelanggan bb) throws SQLException {
         String sql = "update PELANGGAN set NAMA=?,ALAMAT=?,HP=?,TGLREG=?,"
-                + "BATASKREDIT=?,KODEAKUN=?,NPWP=?,STATUSCABANG=?,NAMAPEMILIK=?,"
-                + "STATUSAKTIF=?, NIK=?, JENISPAJAK=? where KODEPELANGGAN=?";
+                + "BATASKREDIT=?,KODEAKUN=?,"
+                + "NPWP=?,STATUSCABANG=?,NAMAPEMILIK=?,"
+                + "STATUSAKTIF=?, PROPINSI=?, KABUPATEN=?, KECAMATAN=?,"
+                + "KELURAHAN=?,KODEPOS=?, RT=?, "
+                + "RW=?, NOMOR=?, BLOK=?, NIK=?, JENISPAJAK=?, ALAMATPEMILIK=? "
+                + "where KODEPELANGGAN=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         //set values to prepared statement object by getting values from bean object
         
@@ -118,9 +157,19 @@ public class pelangganDao {
         pstmt.setString(8, bb.getSTATUSCABANG());
         pstmt.setString(9, bb.getNAMAPEMILIK());
         pstmt.setInt(10, bb.getSTATUSAKTIF());
-        pstmt.setBoolean(11, bb.isNIK());
-        pstmt.setString(12, bb.getJENISPAJAK());
-        pstmt.setString(13, bb.getKODEPELANGGAN());
+        pstmt.setString(11, bb.getPROPINSI());
+        pstmt.setString(12, bb.getKABUPATEN());
+        pstmt.setString(13, bb.getKECAMATAN());
+        pstmt.setString(14, bb.getKELURAHAN());
+        pstmt.setString(15, bb.getKODEPOS());
+        pstmt.setString(16, bb.getRT());
+        pstmt.setString(17, bb.getRW());
+        pstmt.setString(18, bb.getNOMOR());
+        pstmt.setString(19, bb.getBLOK());
+        pstmt.setBoolean(20, bb.isNIK());
+        pstmt.setString(21, bb.getJENISPAJAK());
+        pstmt.setString(22, bb.getALAMATPEMILIK());
+        pstmt.setString(23, bb.getKODEPELANGGAN());
         boolean i = pstmt.execute();
         return i;
     }

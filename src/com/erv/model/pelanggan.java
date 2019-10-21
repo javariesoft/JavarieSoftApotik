@@ -4,7 +4,6 @@
  */
 package com.erv.model;
 
-import java.sql.Date;
 import org.h2.util.StringUtils;
 
 /**
@@ -24,7 +23,17 @@ public class pelanggan {
     private String STATUSCABANG;
     private String NAMAPEMILIK;
     private int STATUSAKTIF;
+    private String PROPINSI;
+    private String KABUPATEN;
+    private String KECAMATAN;
+    private String KELURAHAN;
+    private String KODEPOS;
+    private String RT;
+    private String RW;
+    private String NOMOR;
+    private String BLOK;
     private boolean NIK;
+    private String ALAMATPEMILIK;
     private String JENISPAJAK;
     
     public pelanggan() {
@@ -40,6 +49,16 @@ public class pelanggan {
         this.STATUSCABANG="";
         this.NAMAPEMILIK="";
         this.STATUSAKTIF=0;
+        PROPINSI = "-";
+        KABUPATEN="-";
+        KECAMATAN="-";
+        KELURAHAN="-";
+        KODEPOS="-";
+        RT="-";
+        RW="-";
+        NOMOR = "-";
+        BLOK="-";
+        ALAMATPEMILIK="";
     }
 
     public String getKODEPELANGGAN() {
@@ -149,7 +168,79 @@ public class pelanggan {
     public void setSTATUSAKTIF(int STATUSAKTIF) {
         this.STATUSAKTIF = STATUSAKTIF;
     }
-    
+
+    public String getPROPINSI() {
+        return PROPINSI;
+    }
+
+    public void setPROPINSI(String PROPINSI) {
+        this.PROPINSI = PROPINSI;
+    }
+
+    public String getKABUPATEN() {
+        return KABUPATEN;
+    }
+
+    public void setKABUPATEN(String KABUPATEN) {
+        this.KABUPATEN = KABUPATEN;
+    }
+
+    public String getKECAMATAN() {
+        return KECAMATAN;
+    }
+
+    public void setKECAMATAN(String KECAMATAN) {
+        this.KECAMATAN = KECAMATAN;
+    }
+
+    public String getKELURAHAN() {
+        return KELURAHAN;
+    }
+
+    public void setKELURAHAN(String KELURAHAN) {
+        this.KELURAHAN = KELURAHAN;
+    }
+
+    public String getKODEPOS() {
+        return KODEPOS;
+    }
+
+    public void setKODEPOS(String KODEPOS) {
+        this.KODEPOS = KODEPOS;
+    }
+
+    public String getRT() {
+        return RT;
+    }
+
+    public void setRT(String RT) {
+        this.RT = RT;
+    }
+
+    public String getRW() {
+        return RW;
+    }
+
+    public void setRW(String RW) {
+        this.RW = RW;
+    }
+
+    public String getNOMOR() {
+        return NOMOR;
+    }
+
+    public void setNOMOR(String NOMOR) {
+        this.NOMOR = NOMOR;
+    }
+
+    public String getBLOK() {
+        return BLOK;
+    }
+
+    public void setBLOK(String BLOK) {
+        this.BLOK = BLOK;
+    }
+
     public boolean isNIK() {
         return NIK;
     }
@@ -157,7 +248,15 @@ public class pelanggan {
     public void setNIK(boolean NIK) {
         this.NIK = NIK;
     }
-    
+
+    public String getALAMATPEMILIK() {
+        return ALAMATPEMILIK;
+    }
+
+    public void setALAMATPEMILIK(String ALAMATPEMILIK) {
+        this.ALAMATPEMILIK = ALAMATPEMILIK;
+    }
+
     public String getJENISPAJAK() {
         return JENISPAJAK;
     }
