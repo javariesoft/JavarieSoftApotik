@@ -129,8 +129,11 @@ public class returbeliDao {
 //                + "where substring(kodereturbeli,4,2)='" + Util.getbln(tgl) + "' "
 //                + "and substring(kodereturbeli,6,2)='" + Util.getthn(tgl).substring(2, 4) + "'";
         
+        //String sql = "select max(right(kodereturbeli,4)) from returbeli "
+        //        + "where substring(kodereturbeli,4,2)='" + Util.getthn(tgl).substring(2, 4) + "'";
         String sql = "select max(right(kodereturbeli,4)) from returbeli "
-                + "where substring(kodereturbeli,4,2)='" + Util.getthn(tgl).substring(2, 4) + "'";
+                + "where substring(kodereturbeli,3,3)='." + Util.getthn(tgl).substring(2, 4) + "'";
+        
         try {
             Statement stat = conn.createStatement();
 
