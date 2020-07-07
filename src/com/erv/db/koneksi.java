@@ -25,7 +25,7 @@ public class koneksi {
 
     private static String urlJ = "jdbc:h2:tcp://localhost/~/dbapotikmrta";
     private static int maxConnections = 25;
-////    private static String urlJ = "jdbc:h2:tcp://192.168.1.5:9092/~/dbapotikmrta";
+//    private static String urlJ = "jdbc:h2:tcp://192.168.1.5:9092/~/dbapotikmrta";
 //    private static final String urlJ = "jdbc:h2:tcp://"+IP+"/~/dbapotikmrta";
     private static String urlM = "jdbc:h2:mem:";
     private static String username = "sa";
